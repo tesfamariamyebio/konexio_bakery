@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import Button from  './components/core/Button';
 import Add from './components/Add';
 import List from './components/List';
@@ -15,22 +15,9 @@ class App extends React.Component{
    this.onClickTabList=this.onClickTabList.bind(this);
    this.onClickTabPay=this.onClickTabPay.bind(this);
   }
-  renderAdd () {
-    return (
-    <div>add</div>
-    );
+  onAdd(price,input){
+
   }
-  renderList(){
-    return (
-      <div>list</div>
-    );
-  }
-  renderPay(){
-    return (
-      <div>pay</div>
-    );
-  }
- 
   onClickTabAdd(){
     this.setState({activeTab:'add'});
   }
@@ -40,23 +27,43 @@ class App extends React.Component{
   onClickTabPay(){
     this.setState({activeTab:'pay'});
   }
+  renderAdd () {
+    
+      if(this.state.activeTab==='add'){
+        return <Add />;
+      }
+      return null;
+   
+    
+  }
+  renderList(){
+    if(this.state.activeTab==='list'){
+      return <List />;
+    }
+   return null;
+   
+  }
+  renderPay(){
+    if(this.state.activeTab==='pay'){
+      return <Pay />;
+    }
+    return null;
+  }
+ 
+ 
   render(){
+
     return(
       <div classsName="boulanger"> 
-      
+     <Button  onClick={this.onClickTabAdd}>ADD</Button>
+     <Button onClick={this.onClickTabList}>List</Button>
+     <Button onClick={this.onClickTabPay}>Pay</Button>
      
-     <Button children='add' onClick={this.onClickTabAdd}/>
-     <Button children='list' onClick={this.onClickTabList}/>
-     <Button children='pay' onClick={this.onClickTabPay}/>
-     
-     <Add   />
-     <List   />
-     <Pay   />
-     
+    
 
-     {/* {this.renderAdd()} 
+     {this.renderAdd()} 
       {this.renderList()}
-      {this.renderPay()} */}
+      {this.renderPay()}
      
       </div>
     );

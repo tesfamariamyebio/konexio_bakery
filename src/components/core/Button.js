@@ -6,7 +6,7 @@ class Button extends React.Component{
         // const Button = ({children,iSelected,onclick});
         return (
             <div>
-                <button className='btn btn-primary' onClick={this.onClickTabAdd}>
+                <button className='btn btn-primary' onClick={this.props.onClick}>
                     {this.props.children}
                 </button>
             </div>

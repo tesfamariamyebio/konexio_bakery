@@ -6,15 +6,35 @@ class Add extends React.Component{
        this.state={
         input:'',
         price:'1',
-
        }
+       this.handleChange=this.handleChange.bind(this);
+       this.handleSubmit=this.handleSubmit.bind(this);
+       this.handleChangeSlider=this.handleChangeSlider.bind(this);
+    }
+    handleChangeSlider(val){
+        console.log(val)
+        this.setState({price:val});
+    }
+    handleChange(evt){
+        this.setState({
+            input:evt.target.value
+        });
+    }
+    handleSubmit(){
+        console.log(this.state.price,  this.state.input)
     }
     render(){
         return (
             <div>
-                <p>add</p>
-                <input></input>
-                 <Slider />
+                <div>add</div>
+                <input  type='text' value={this.state.input} placeholder='item' onChange={this.handleChange}></input>
+                {/* <input  type='submit' value='envoyer' ></input> */}<button onClick={this.handleSubmit}>Add</button>
+                 <Slider 
+                value={this.state.price}
+                 onChange={this.handleChangeSlider}
+                 />
+                 {this.state.price}
+                 {/* <button onClick={this.handleSubmit}> Envoyer</button>  */}
 
             </div>
         );
