@@ -4,6 +4,7 @@ import Add from './components/Add';
 import List from './components/List';
 import Pay from './components/Pay';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -14,8 +15,18 @@ class App extends React.Component{
    this.onClickTabAdd=this.onClickTabAdd.bind(this);
    this.onClickTabList=this.onClickTabList.bind(this);
    this.onClickTabPay=this.onClickTabPay.bind(this);
+   this.onAdd=this.onAdd.bind(this);
   }
   onAdd(price,input){
+    const items=this.state.items;
+    items.push({
+          input,
+          price
+    });
+    this.setState({
+      items,
+      // activeTab:'list'
+    });
 
   }
   onClickTabAdd(){
@@ -30,18 +41,15 @@ class App extends React.Component{
   renderAdd () {
     
       if(this.state.activeTab==='add'){
-        return <Add />;
+        return <Add onAdd={this.onAdd} />;
       }
       return null;
-   
-    
   }
   renderList(){
     if(this.state.activeTab==='list'){
-      return <List />;
+      return <List items={this.state.items}/>;
     }
    return null;
-   
   }
   renderPay(){
     if(this.state.activeTab==='pay'){
@@ -49,23 +57,20 @@ class App extends React.Component{
     }
     return null;
   }
- 
- 
   render(){
-
+    console.log('items', this.state.items)
     return(
-      <div classsName="boulanger"> 
-     <Button  onClick={this.onClickTabAdd}>ADD</Button>
-     <Button onClick={this.onClickTabList}>List</Button>
-     <Button onClick={this.onClickTabPay}>Pay</Button>
-     
-    
-
+    <div classsName="container-fluid" >
+      <div className="row"> 
+     <Button   onClick={this.onClickTabAdd}>ADD</Button>
+     <Button   onClick={this.onClickTabList}>List</Button>
+     <Button  onClick={this.onClickTabPay}>Pay</Button> 
+     </div> 
      {this.renderAdd()} 
       {this.renderList()}
       {this.renderPay()}
      
-      </div>
+    </div>
     );
   }
 }

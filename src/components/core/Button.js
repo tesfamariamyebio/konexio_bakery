@@ -4,6 +4,10 @@ class Button extends React.Component{
    
     render(){
         // const Button = ({children,iSelected,onclick});
+        let btnClass='btn-outline-primary';
+        if(this.props.isSelected===true){
+            btnClass='btn-primary';
+        }
         return (
             <div>
                 <button className='btn btn-primary' onClick={this.props.onClick}>

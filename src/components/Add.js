@@ -21,20 +21,27 @@ class Add extends React.Component{
         });
     }
     handleSubmit(){
-        console.log(this.state.price,  this.state.input)
+        this.props.onAdd(this.state.price,this.state.input)
+       this.setState( {price:1,
+        input:''
+
+
+    }  ); 
     }
     render(){
         return (
             <div>
                 <div>add</div>
-                <input  type='text' value={this.state.input} placeholder='item' onChange={this.handleChange}></input>
-                {/* <input  type='submit' value='envoyer' ></input> */}<button onClick={this.handleSubmit}>Add</button>
+               <div style={{marginTop:'60px'}}>{this.state.price}</div> 
+               <div><input  style={{width:'600px',height:'45px', borderRadius:'5px',border:'1px solid brown', marginTop:'20px'}}type='text' value={this.state.input} placeholder='item' onChange={this.handleChange}>
+                </input>
+               <button className='btn btn-primary' style={{height:'45px'}} onClick={this.handleSubmit}>Add</button> </div> 
                  <Slider 
                 value={this.state.price}
                  onChange={this.handleChangeSlider}
                  />
-                 {this.state.price}
-                 {/* <button onClick={this.handleSubmit}> Envoyer</button>  */}
+                
+                
 
             </div>
         );

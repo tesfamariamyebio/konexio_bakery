@@ -5,11 +5,12 @@ class Slider extends React.Component{
     render(){
         return(
             <div className='slid'>
-                <RCSlider 
+                <RCSlider style={{width:'600px'}}
                   max={10} 
                   min={1}
                   onChange={this.props.onChange}
                   value={this.props.value}/>
+                  {/* value=={this.satet.price} */}
                  
             </div>
         );
