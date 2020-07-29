@@ -10,11 +10,13 @@ class Button extends React.Component{
         }
         return (
             <div>
-                <button className='btn btn-primary' onClick={this.props.onClick}>
+                <button className={`btn ${btnClass}`} onClick={this.props.onClick}>
+                
                     {this.props.children}
                 </button>
             </div>
         );
+        
     }
 }
 export default Button;

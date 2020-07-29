@@ -62,9 +62,9 @@ class App extends React.Component{
     return(
     <div classsName="container-fluid" >
       <div className="row"> 
-     <Button   onClick={this.onClickTabAdd}>ADD</Button>
-     <Button   onClick={this.onClickTabList}>List</Button>
-     <Button  onClick={this.onClickTabPay}>Pay</Button> 
+     <Button  isSelected={this.state.activeTab==='add'} onClick={this.onClickTabAdd}>ADD</Button>
+     <Button  isSelected={this.state.activeTab==='list'} onClick={this.onClickTabList}>List</Button>
+     <Button isSelected={this.state.activeTab==='pay'} onClick={this.onClickTabPay}>Pay</Button> 
      </div> 
      {this.renderAdd()} 
       {this.renderList()}

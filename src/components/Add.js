@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from './core/Slider';
+import Button from './core/Button';
 class Add extends React.Component{
     constructor(props){
         super(props);
@@ -35,11 +36,11 @@ class Add extends React.Component{
                <div style={{marginTop:'60px'}}>{this.state.price}</div> 
                <div><input  style={{width:'600px',height:'45px', borderRadius:'5px',border:'1px solid brown', marginTop:'20px'}}type='text' value={this.state.input} placeholder='item' onChange={this.handleChange}>
                 </input>
-               <button className='btn btn-primary' style={{height:'45px'}} onClick={this.handleSubmit}>Add</button> </div> 
-                 <Slider 
+                <Slider 
                 value={this.state.price}
-                 onChange={this.handleChangeSlider}
-                 />
+                 onChange={this.handleChangeSlider}/>
+                
+               <Button className='btn btn-primary' style={{height:'45px'}} onClick={this.handleSubmit}>Add</Button> </div> 
                 
                 
 
